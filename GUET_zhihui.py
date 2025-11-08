@@ -30,7 +30,7 @@ class BlogViewer:
         self.base_url = "https://zhihui.guet.edu.cn/stu/News.aspx"
 
         # 直接设置cookie
-        self.cookie_string = 'ASP.NET_SessionId=h4kznqqx5mv02mrkagks5ref;sduuid=88297a3703ff915a0ffe8efa112976d7;T_Stu=userid=102550;'#这里填入你的cookie，有几个就填几个，有的同学没有sduuid
+        self.cookie_string = 'ASP.NET_SessionId=xxxxxxxxxxxxxxxxxx;sduuid=xxxxxxxxxxxxxxxxxxxx;T_Stu=userid=xxxxxxx;'#这里填入你的cookie，有几个就填几个，有的同学没有sduuid
 
     def set_cookies(self):
         """设置cookie"""
@@ -208,3 +208,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
