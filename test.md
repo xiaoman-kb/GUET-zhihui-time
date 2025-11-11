@@ -23,6 +23,23 @@ pip install timm==1.0.7 thop efficientnet_pytorch==0.7.1 einops grad-cam==1.4.8 
  - detect.py 推理的脚本
  - export.py 导出onnx脚本
  - 模型配置文件在ultralytics/cfg/models/v8中
+
+## 技术亮点
+### CVPR2024-StarNet Backbone.
+使用StarNet CVPR2024改进yolov8-backbone.
+### C2f-Star.
+使用StarNet CVPR2024中的StarBlock改进C2f.
+
+### Lightweight Shared Convolutional Detection Head
+
+轻量化检测头.
+GroupNorm在FOCS论文中已经证实可以提升检测头定位和分类的性能.
+通过使用共享卷积，可以大幅减少参数数量，这使得模型更轻便，特别是在资源受限的设备上.
+在使用共享卷积的同时，为了应对每个检测头所检测的目标尺度不一致的问题，使用Scale层对特征进行缩放.
+综合以上，我们可以让检测头做到参数量更少、计算量更少的情况下，尽可能减少精度的损失.
+
+<img width="1059" height="821" alt="image" src="https://github.com/user-attachments/assets/b2c21a47-569b-4cb7-bdbb-3fa129f4b1a7" />
+
 ### 表格示例
 
 | 功能 | 状态 | 说明 |
