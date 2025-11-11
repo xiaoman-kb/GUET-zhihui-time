@@ -25,15 +25,14 @@ pip install timm==1.0.7 thop efficientnet_pytorch==0.7.1 einops grad-cam==1.4.8 
  - 模型配置文件在ultralytics/cfg/models/v8中
 
 ## 技术亮点
-### CVPR2024-StarNet Backbone.
-使用StarNet CVPR2024改进yolov8-backbone.
-### C2f-Star.
-使用StarNet CVPR2024中的StarBlock改进C2f.
-
+### 扩充数据集与数据增强
+引入外部印章数据1544张，对原有真章/测试定位数据进行标注划分，训练集数据进行90度旋转、15%图像进行灰度操作、+-15%随机亮度调整、模糊以及噪点
+最终训练集数据为3913张，验证集568张以及测试集143张.
+### 轻量化 Backbone.
+引入Star操作改进yolov8-backbone，通过多层堆叠的Star操作，在降低模型参数量的同时指数级增加隐式维度，提升模型学习效果.
 ### Lightweight Shared Convolutional Detection Head
 
 轻量化检测头.
-GroupNorm在FOCS论文中已经证实可以提升检测头定位和分类的性能.
 通过使用共享卷积，可以大幅减少参数数量，这使得模型更轻便，特别是在资源受限的设备上.
 在使用共享卷积的同时，为了应对每个检测头所检测的目标尺度不一致的问题，使用Scale层对特征进行缩放.
 综合以上，我们可以让检测头做到参数量更少、计算量更少的情况下，尽可能减少精度的损失.
